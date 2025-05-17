@@ -15,6 +15,13 @@ public class Markdown extends BaseDocument {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Markdown() {
+
+    }
+
+    public Markdown(String s) {
+    }
+
     public String getSlugger() {
         return slugger;
     }
