@@ -1,9 +1,9 @@
-package com.daebecodin.markdowntown.documents;
+package com.daebecodin.markdowntown.document;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public interface Document {
+interface AbstractDocument {
     UUID getId();
     String getTitle();
     String getContent();       // raw Markdown
