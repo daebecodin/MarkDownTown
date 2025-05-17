@@ -1,10 +1,10 @@
-package com.daebecodin.markdowntown.documents;
+package com.daebecodin.markdowntown.document;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-public class BaseDocument implements Document {
+public class BaseDocument implements AbstractDocument {
     protected UUID id;
     protected String title;
     protected String content;
