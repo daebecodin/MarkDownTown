@@ -1,11 +1,20 @@
 package com.daebecodin.markdowntown.document;
 
+import com.daebecodin.markdowntown.user.User;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@MappedSuperclass
 public class BaseDocument implements AbstractDocument {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected UUID id;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id")
+    protected User user;
     protected String title;
     protected String content;
     protected String html;
@@ -15,9 +24,10 @@ public class BaseDocument implements AbstractDocument {
     public BaseDocument() {
     }
 
-    public BaseDocument(UUID id, String title, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public BaseDocument(UUID id, String title, User user, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
+        this.user = user;
         this.content = content;
         this.html = html;
         this.createdAt = createdAt;
@@ -36,6 +46,14 @@ public class BaseDocument implements AbstractDocument {
     @Override
     public String getTitle() {
         return title;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setTitle(String title) {
@@ -102,4 +120,6 @@ public class BaseDocument implements AbstractDocument {
                 ", updatedAt=" + updatedAt +
                 '}';
     }
+
+
 }
