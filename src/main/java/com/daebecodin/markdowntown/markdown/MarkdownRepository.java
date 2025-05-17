@@ -1,4 +1,4 @@
 package com.daebecodin.markdowntown.markdown;
 
-public class MarkdownController {
+public interface MarkdownRepository {
 }
