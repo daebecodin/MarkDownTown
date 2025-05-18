@@ -2,6 +2,7 @@ package com.daebecodin.markdowntown.document.markdown;
 
 import com.daebecodin.markdowntown.document.BaseDocument;
 import com.daebecodin.markdowntown.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -13,6 +14,7 @@ public class Markdown extends BaseDocument {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id")
+    @JsonIgnore  // ← prevent Jackson from even trying to serialize the User
     private User user;
 
     public Markdown() {

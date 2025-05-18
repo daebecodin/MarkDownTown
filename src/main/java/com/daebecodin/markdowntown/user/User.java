@@ -1,6 +1,8 @@
 package com.daebecodin.markdowntown.user;
 import com.daebecodin.markdowntown.document.markdown.Markdown;
 import com.daebecodin.markdowntown.person.Person;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class User extends Person {
     @OneToMany(
             mappedBy = "user", // user fields in BaseDocument class
@@ -15,6 +18,8 @@ public class User extends Person {
             orphanRemoval = true, // delete markdown if removed from the list
             fetch = FetchType.LAZY // prevents markdowns from being loaded when user is loaded
     )
+    @JsonIgnore  // ← hide the back-reference if you ever serialize User
+
     private List<Markdown> markdowns = new ArrayList<>();
 
     public void addMarkdown(Markdown markdown) {
