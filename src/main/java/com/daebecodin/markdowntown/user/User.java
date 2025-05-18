@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class User extends Person {
     @OneToMany(
             mappedBy = "user", // user fields in BaseDocument class

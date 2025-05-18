@@ -14,7 +14,6 @@ public class Markdown extends BaseDocument {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id")
-    @JsonIgnore  // ← prevent Jackson from even trying to serialize the User
     private User user;
 
     public Markdown() {

@@ -1,6 +1,7 @@
 package com.daebecodin.markdowntown.document.markdown;
 
 
+import com.daebecodin.markdowntown.document.markdown.dto.MarkdownDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,16 @@ public class MarkdownController {
     }
 
     @GetMapping("all")
-    public List<Markdown> getAll() {
-        return markdownService.findAll();
+    public List<MarkdownDto> getAll() {
+        return markdownService.findAll().stream()
+                .map(md -> {
+                    MarkdownDto dto = new MarkdownDto();
+                    dto.setId(md.getId());
+                    dto.setTitle(md.getTitle());
+                    dto.setContent(md.getContent());
+                    return dto;
+                })
+                .toList();
+
     }
 }
