@@ -1,26 +1,40 @@
 package com.daebecodin.markdowntown.person;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
 @MappedSuperclass
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
+
+   @Column(name = "created-at")
+   @CreationTimestamp
+    private LocalDateTime createdAt;
+
+   @UpdateTimestamp
+   @Column(name = "updated-at")
+    private LocalDateTime updatedAt;
 
 
 
     public Person() {
     }
 
-    public Person(UUID id, String name, String username, String password) {
+    public Person( Long id, String name, String username, String password) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -29,11 +43,29 @@ public class Person {
 
 
 
-    public UUID getId() {
+
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

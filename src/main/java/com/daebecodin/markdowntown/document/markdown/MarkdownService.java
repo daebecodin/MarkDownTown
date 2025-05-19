@@ -9,5 +9,5 @@ import java.util.UUID;
 @Component
 public  interface MarkdownService {
 
-List<MarkdownDto> getMarkdownById(UUID id);
+List<MarkdownDto> getMarkdownById(Long id);
 }

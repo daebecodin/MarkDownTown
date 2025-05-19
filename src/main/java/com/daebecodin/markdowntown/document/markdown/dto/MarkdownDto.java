@@ -1,12 +1,14 @@
 package com.daebecodin.markdowntown.document.markdown.dto;
 
 import com.daebecodin.markdowntown.document.markdown.Markdown;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Component
 public class MarkdownDto {
-    private UUID id;
+    private Long id;
     private String title;
     private String content;
     private LocalDateTime createdAt;
@@ -22,11 +24,11 @@ public class MarkdownDto {
         return dto;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

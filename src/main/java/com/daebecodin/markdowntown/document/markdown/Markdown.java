@@ -7,13 +7,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Markdown extends BaseDocument {
     private String slugger;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     public Markdown() {
@@ -31,12 +34,12 @@ public class Markdown extends BaseDocument {
         this.slugger = slugger;
     }
 
-    @Override
+
     public User getUser() {
         return user;
     }
 
-    @Override
+
     public void setUser(User user) {
         this.user = user;
     }

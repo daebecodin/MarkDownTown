@@ -20,7 +20,7 @@ public class MarkdownServiceImpl implements MarkdownService{
     }
 
     @Override
-    public List<MarkdownDto> getMarkdownById(UUID userId) {
+    public List<MarkdownDto> getMarkdownById(Long userId) {
        return markdownRepository.findByUserId(userId)
                 .stream()
                 .map(MarkdownDto::fromEntity)

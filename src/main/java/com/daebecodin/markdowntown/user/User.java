@@ -17,7 +17,6 @@ public class User extends Person {
             orphanRemoval = true, // delete markdown if removed from the list
             fetch = FetchType.LAZY // prevents markdowns from being loaded when user is loaded
     )
-    @JsonIgnore  // ← hide the back-reference if you ever serialize User
 
     private List<Markdown> markdowns = new ArrayList<>();
 

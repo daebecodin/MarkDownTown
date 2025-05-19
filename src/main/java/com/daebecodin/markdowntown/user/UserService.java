@@ -13,5 +13,9 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @Component
 public  interface UserService {
 
-    UserDto getUserById(UUID id);
+    UserDto getUserById(Long id);
+
+    UserDto getUserByName(String name);
+
+    List<UserDto> getAllUsers();
 }

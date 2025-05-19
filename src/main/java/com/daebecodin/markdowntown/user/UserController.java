@@ -3,13 +3,16 @@ package com.daebecodin.markdowntown.user;
 import com.daebecodin.markdowntown.document.markdown.MarkdownService;
 import com.daebecodin.markdowntown.user.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping(path ="user")
+@RequestMapping(path ="/markdowntown")
 public class UserController {
 
     private final UserService userService;
@@ -21,11 +24,26 @@ public class UserController {
         this.markdownService = markdownService;
     }
 
-    // TODO: get user by id
-    @GetMapping("user/{id}")
-    public ResponseEntity<UserDto> getUserById() {
+    // TODO: get users
 
-        return null;
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers(@RequestParam(required = false) String name) {
+        if (name != null) {
+            UserDto dto = userService.getUserByName(name);
+            return ResponseEntity.ok(dto);
+        } else {
+            // fall back to list-all…
+            List<UserDto> all = userService.getAllUsers();
+            return ResponseEntity.ok(all);
+        }
+    }
+    // TODO: get user by id
+    @GetMapping("{id}")
+    public ResponseEntity<UserDto> getUserById(
+            @RequestBody
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(userService.getUserById(id));
     }
     // TODO: get get markdown list fron user by id
     // TODO: get get markdown by id from user by id

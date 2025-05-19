@@ -1,4 +1,4 @@
-package com.daebecodin.markdowntown.document.markdown.config;
+package com.daebecodin.markdowntown.config;
 
 import com.daebecodin.markdowntown.document.markdown.Markdown;
 import com.daebecodin.markdowntown.document.markdown.MarkdownRepository;
@@ -25,6 +25,8 @@ public class DataLoader implements CommandLineRunner {
         alice.setName("Alice");
         alice.setUsername("alice");
         alice.setPassword("password");
+        alice.getCreatedAt();
+        alice.getUpdatedAt();
         userRepo.save(alice);
 
         // 2) create a Markdown note for Alice

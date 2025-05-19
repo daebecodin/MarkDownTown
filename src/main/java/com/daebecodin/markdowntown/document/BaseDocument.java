@@ -2,6 +2,10 @@ package com.daebecodin.markdowntown.document;
 
 import com.daebecodin.markdowntown.user.User;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -9,25 +13,36 @@ import java.util.UUID;
 
 @MappedSuperclass
 public class BaseDocument implements AbstractDocument {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected UUID id;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id")
-    protected User user;
-    protected String title;
-    protected String content;
-    protected String html;
-    protected LocalDateTime createdAt;
-    protected LocalDateTime updatedAt;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+
+//    private User user
+
+    @Column(name = "title")
+    private String title;
+    @Column(name = "content")
+    private String content;
+    @Column(name = "html")
+    private String html;
+
+    @CreationTimestamp
+    @Column(name = "created-at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated-at")
+    private LocalDateTime updatedAt;
 
     public BaseDocument() {
     }
 
-    public BaseDocument(UUID id, String title, User user, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public BaseDocument(Long id, String title, User user, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
-        this.user = user;
+//        this.user = user;
         this.content = content;
         this.html = html;
         this.createdAt = createdAt;
@@ -35,11 +50,11 @@ public class BaseDocument implements AbstractDocument {
     }
 
     @Override
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -48,13 +63,13 @@ public class BaseDocument implements AbstractDocument {
         return title;
     }
 
-    public User getUser() {
-        return user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public void setTitle(String title) {
         this.title = title;
