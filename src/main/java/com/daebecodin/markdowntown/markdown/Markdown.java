@@ -1,8 +1,7 @@
-package com.daebecodin.markdowntown.document.markdown;
+package com.daebecodin.markdowntown.markdown;
 
 import com.daebecodin.markdowntown.document.BaseDocument;
 import com.daebecodin.markdowntown.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;

@@ -1,7 +1,6 @@
-package com.daebecodin.markdowntown.document.markdown;
+package com.daebecodin.markdowntown.markdown;
 
 
-import com.daebecodin.markdowntown.document.markdown.dto.MarkdownDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +19,8 @@ public class MarkdownServiceImpl implements MarkdownService{
     }
 
     @Override
-    public List<MarkdownDto> getMarkdownById(Long userId) {
-       return markdownRepository.findByUserId(userId)
+    public List<MarkdownDto> getMarkdownById(UUID userId) {
+        return markdownRepository.findByUserId(userId)
                 .stream()
                 .map(MarkdownDto::fromEntity)
                 .collect(Collectors.toList());

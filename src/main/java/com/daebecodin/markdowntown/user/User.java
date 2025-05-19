@@ -1,8 +1,6 @@
 package com.daebecodin.markdowntown.user;
-import com.daebecodin.markdowntown.document.markdown.Markdown;
+import com.daebecodin.markdowntown.markdown.Markdown;
 import com.daebecodin.markdowntown.person.Person;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -17,7 +15,6 @@ public class User extends Person {
             orphanRemoval = true, // delete markdown if removed from the list
             fetch = FetchType.LAZY // prevents markdowns from being loaded when user is loaded
     )
-
     private List<Markdown> markdowns = new ArrayList<>();
 
     public List<Markdown> getMarkdowns() {
@@ -40,3 +37,4 @@ public class User extends Person {
 
 
 }
+

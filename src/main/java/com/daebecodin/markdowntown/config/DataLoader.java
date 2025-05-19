@@ -1,7 +1,7 @@
 package com.daebecodin.markdowntown.config;
 
-import com.daebecodin.markdowntown.document.markdown.Markdown;
-import com.daebecodin.markdowntown.document.markdown.MarkdownRepository;
+import com.daebecodin.markdowntown.markdown.Markdown;
+import com.daebecodin.markdowntown.markdown.MarkdownRepository;
 import com.daebecodin.markdowntown.user.User;
 import com.daebecodin.markdowntown.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -34,6 +34,8 @@ public class DataLoader implements CommandLineRunner {
         note.setTitle("First Note");
         note.setContent("# Hello Alice");
         note.setSlugger("first-note");
+        note.getCreatedAt();
+        note.getUpdatedAt();
         note.setUser(alice);
         mdRepo.save(note);
     }

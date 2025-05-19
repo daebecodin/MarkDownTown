@@ -1,10 +1,7 @@
 package com.daebecodin.markdowntown.document;
 
-import com.daebecodin.markdowntown.user.User;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -12,12 +9,12 @@ import java.util.Objects;
 import java.util.UUID;
 
 @MappedSuperclass
-public class BaseDocument implements AbstractDocument {
+public class BaseDocument implements AbstractDocument{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID")
     @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    private UUID id;
 
 //    private User user
 
@@ -39,26 +36,23 @@ public class BaseDocument implements AbstractDocument {
     public BaseDocument() {
     }
 
-    public BaseDocument(Long id, String title, User user, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public BaseDocument(UUID id, String title, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
-//        this.user = user;
         this.content = content;
         this.html = html;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    @Override
     public String getTitle() {
         return title;
     }
@@ -75,7 +69,6 @@ public class BaseDocument implements AbstractDocument {
         this.title = title;
     }
 
-    @Override
     public String getContent() {
         return content;
     }
@@ -84,7 +77,6 @@ public class BaseDocument implements AbstractDocument {
         this.content = content;
     }
 
-    @Override
     public String getHtml() {
         return html;
     }
@@ -93,7 +85,6 @@ public class BaseDocument implements AbstractDocument {
         this.html = html;
     }
 
-    @Override
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -102,7 +93,6 @@ public class BaseDocument implements AbstractDocument {
         this.createdAt = createdAt;
     }
 
-    @Override
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -111,7 +101,6 @@ public class BaseDocument implements AbstractDocument {
         this.updatedAt = updatedAt;
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -119,12 +108,10 @@ public class BaseDocument implements AbstractDocument {
         return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(content, that.content) && Objects.equals(html, that.html) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(id, title, content, html, createdAt, updatedAt);
     }
 
-    @Override
     public String toString() {
         return "BaseDocument{" +
                 "id=" + id +

@@ -1,7 +1,6 @@
-package com.daebecodin.markdowntown.document.markdown;
+package com.daebecodin.markdowntown.markdown;
 
 
-import com.daebecodin.markdowntown.document.markdown.dto.MarkdownDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

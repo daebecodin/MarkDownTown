@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public interface  UserRepository extends JpaRepository<User, Long>  {
-    User findUserById(Long id);
+public interface  UserRepository extends JpaRepository<User, UUID> {
+    User findUserById(UUID id);
     User findUserByName(String name);
     List<User> findAll();
 

@@ -1,7 +1,6 @@
 package com.daebecodin.markdowntown.user;
 
 
-import com.daebecodin.markdowntown.user.dto.UserDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getUserById(Long id) {
+    public UserDto getUserById(UUID id) {
         User user = userRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("User Not Found"));
 
@@ -42,8 +41,8 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(UserDto::fromEntity)
                 .toList();
-
     }
+
 
 
 }

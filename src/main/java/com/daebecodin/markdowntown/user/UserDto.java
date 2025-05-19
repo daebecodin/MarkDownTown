@@ -1,14 +1,14 @@
-package com.daebecodin.markdowntown.user.dto;
+package com.daebecodin.markdowntown.user;
 
-import com.daebecodin.markdowntown.document.markdown.Markdown;
-import com.daebecodin.markdowntown.user.User;
+import com.daebecodin.markdowntown.markdown.Markdown;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class UserDto {
-    private Long id;
+    private UUID id;
     private String name;
     private String username;
     private List<Markdown> markdowns;
@@ -23,11 +23,11 @@ public class UserDto {
         return dto;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

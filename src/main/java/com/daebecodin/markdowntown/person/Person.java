@@ -12,8 +12,9 @@ import java.util.UUID;
 @MappedSuperclass
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @Column( updatable = false, nullable = false)
+    private UUID id;
     @Column(name = "name")
     private String name;
     @Column(name = "username")
@@ -21,12 +22,12 @@ public class Person {
     @Column(name = "password")
     private String password;
 
-   @Column(name = "created-at")
-   @CreationTimestamp
+    @Column(name = "created-at")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
-   @UpdateTimestamp
-   @Column(name = "updated-at")
+    @UpdateTimestamp
+    @Column(name = "updated-at")
     private LocalDateTime updatedAt;
 
 
@@ -34,7 +35,7 @@ public class Person {
     public Person() {
     }
 
-    public Person( Long id, String name, String username, String password) {
+    public Person( UUID id, String name, String username, String password) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -61,11 +62,11 @@ public class Person {
         this.createdAt = createdAt;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
