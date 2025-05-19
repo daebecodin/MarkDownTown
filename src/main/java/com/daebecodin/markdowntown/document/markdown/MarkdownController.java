@@ -22,15 +22,7 @@ public class MarkdownController {
 
     @GetMapping("all")
     public List<MarkdownDto> getAll() {
-        return markdownService.findAll().stream()
-                .map(md -> {
-                    MarkdownDto dto = new MarkdownDto();
-                    dto.setId(md.getId());
-                    dto.setTitle(md.getTitle());
-                    dto.setContent(md.getContent());
-                    return dto;
-                })
-                .toList();
+
 
     }
 }

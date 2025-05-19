@@ -21,6 +21,14 @@ public class User extends Person {
 
     private List<Markdown> markdowns = new ArrayList<>();
 
+    public List<Markdown> getMarkdowns() {
+        return markdowns;
+    }
+
+    public void setMarkdowns(List<Markdown> markdowns) {
+        this.markdowns = markdowns;
+    }
+
     public void addMarkdown(Markdown markdown) {
         markdowns.add(markdown);
         markdown.setUser(this);

@@ -1,5 +1,7 @@
 package com.daebecodin.markdowntown.document.markdown.dto;
 
+import com.daebecodin.markdowntown.document.markdown.Markdown;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -9,6 +11,16 @@ public class MarkdownDto {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public static MarkdownDto fromEntity(Markdown markdown) {
+        MarkdownDto dto = new MarkdownDto();
+        dto.setId(markdown.getId());
+        dto.setTitle(markdown.getTitle());
+        dto.setContent(markdown.getContent());
+        dto.setUpdatedAt(markdown.getUpdatedAt());
+
+        return dto;
+    }
 
     public UUID getId() {
         return id;

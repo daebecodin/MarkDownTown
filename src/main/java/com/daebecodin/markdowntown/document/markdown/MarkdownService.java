@@ -1,25 +1,13 @@
 package com.daebecodin.markdowntown.document.markdown;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.daebecodin.markdowntown.document.markdown.dto.MarkdownDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
-public class MarkdownService {
+public  interface MarkdownService {
 
-    private final MarkdownRepository markdownRepository;
-
-    @Autowired
-    public MarkdownService(MarkdownRepository markdownRepository) {
-        this.markdownRepository = markdownRepository;
-    }
-
-    public List<Markdown> findAll() {
-        return markdownRepository.findAll();
-    }
-
-
-
-
+List<MarkdownDto> getMarkdownById(UUID id);
 }
