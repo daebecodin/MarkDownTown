@@ -46,7 +46,7 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
     // TODO: get user by id
-    @GetMapping("{id}")
+    @GetMapping("users/{id}")
     public ResponseEntity<UserDto> getUserById(
             @RequestBody
             @PathVariable UUID id) {

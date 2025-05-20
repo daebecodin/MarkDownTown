@@ -3,6 +3,8 @@ package com.daebecodin.mdt.markdown;
 
 import com.daebecodin.mdt.document.BaseDocument;
 import com.daebecodin.mdt.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -17,6 +19,7 @@ public class Markdown extends BaseDocument {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private User user;
 
     public Markdown() {

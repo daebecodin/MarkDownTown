@@ -3,6 +3,7 @@ package com.daebecodin.mdt.user;
 import com.daebecodin.mdt.markdown.Markdown;
 
 import com.daebecodin.mdt.person.Person;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class User extends Person {
             orphanRemoval = true, // delete markdown if removed from the list
             fetch = FetchType.LAZY // prevents markdowns from being loaded when user is loaded
     )
+    @JsonManagedReference
     private List<Markdown> markdowns = new ArrayList<>();
 
     public List<Markdown> getMarkdowns() {
