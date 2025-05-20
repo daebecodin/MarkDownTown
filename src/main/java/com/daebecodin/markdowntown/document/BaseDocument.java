@@ -1,4 +1,5 @@
 package com.daebecodin.markdowntown.document;
+import com.daebecodin.markdowntown.documents.AbstractDocument;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
