@@ -1,28 +1,27 @@
-package com.daebecodin.mdt;
+package com.daebecodin.mdt.data;
 
 import com.daebecodin.mdt.markdown.Markdown;
 import com.daebecodin.mdt.markdown.MarkdownRepository;
 import com.daebecodin.mdt.user.User;
 import com.daebecodin.mdt.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile("development")
 @Component
-public class DataLoader implements CommandLineRunner {
-
-    private final UserRepository userRepo;
-    private final MarkdownRepository mdRepo;
+public class DevelopmentDataLoader extends DataLoader {
+    private  UserRepository userRepository;
+    private  MarkdownRepository markdownRepopsitory;
 
     @Autowired
-    public DataLoader(UserRepository userRepo, MarkdownRepository mdRepo) {
-        this.userRepo = userRepo;
-        this.mdRepo   = mdRepo;
+    public DevelopmentDataLoader(UserRepository userRepository, MarkdownRepository markdownRepository) {
+        this.userRepository = userRepository;
+        this.markdownRepopsitory = markdownRepository;
     }
 
     @Override
-    public void run(String... args) {
+    public void loadMarkDownSpecificData() {
         System.out.println("🔄 DataLoader running");
         // 1) create a User
         User alice = new User();
@@ -31,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
         alice.setPassword("password");
         alice.getCreatedAt();
         alice.getUpdatedAt();
-        userRepo.save(alice);
+        userRepository.save(alice);
 
         // 2) create a Markdown note for Alice
         Markdown note = new Markdown();
@@ -41,6 +40,7 @@ public class DataLoader implements CommandLineRunner {
         note.getCreatedAt();
         note.getUpdatedAt();
         note.setUser(alice);
-        mdRepo.save(note);
+        markdownRepopsitory.save(note);
     }
+
 }
