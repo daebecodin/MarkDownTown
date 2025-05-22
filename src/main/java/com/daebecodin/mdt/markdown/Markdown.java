@@ -2,9 +2,9 @@ package com.daebecodin.mdt.markdown;
 
 
 import com.daebecodin.mdt.document.BaseDocument;
+import com.daebecodin.mdt.folder.Folder;
 import com.daebecodin.mdt.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -19,8 +19,14 @@ public class Markdown extends BaseDocument {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @JsonBackReference
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "folder_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonBackReference
+    private Folder folder;
 
     public Markdown() {
 
@@ -36,7 +42,6 @@ public class Markdown extends BaseDocument {
     public void setSlugger(String slugger) {
         this.slugger = slugger;
     }
-
 
     public User getUser() {
         return user;

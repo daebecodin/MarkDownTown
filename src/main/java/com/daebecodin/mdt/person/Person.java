@@ -12,7 +12,7 @@ import java.util.UUID;
 @MappedSuperclass
 public class Person {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column( updatable = false, nullable = false)
     private UUID id;
     @Column(name = "name")

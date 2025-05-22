@@ -1,5 +1,6 @@
 package com.daebecodin.mdt.data;
 
+
 import com.daebecodin.mdt.markdown.Markdown;
 import com.daebecodin.mdt.markdown.MarkdownRepository;
 import com.daebecodin.mdt.user.User;

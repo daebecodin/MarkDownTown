@@ -4,6 +4,12 @@
 A simple, markdown-powered note-taker and developer journal built with Spring Boot and Supabase.
 
 ---
+# Currently Working On
+- PUT endpoint
+- DELETE endpoint
+- Adding Folder Logic
+---
+
 
 ## Features
 
@@ -18,13 +24,13 @@ A simple, markdown-powered note-taker and developer journal built with Spring Bo
 
 - Java 17+
 - Maven or Gradle
-- Supabase account with a PostgreSQL database
+- Supabase account with/or a PostgreSQL database
 
----
 
 ## Getting Started
 
-### Clone Repository
+---
+## Clone Repository
 
 ```bash
 git clone https://github.com/daebecodin/MarkDownTown.git

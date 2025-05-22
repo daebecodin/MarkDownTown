@@ -1,7 +1,8 @@
 package com.daebecodin.mdt.user;
 
-import com.daebecodin.mdt.markdown.Markdown;
+import com.daebecodin.mdt.folder.Folder;
 
+import com.daebecodin.mdt.markdown.Markdown;
 import com.daebecodin.mdt.person.Person;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -12,14 +13,32 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User extends Person {
-    @OneToMany(
-            mappedBy = "user", // user fields in BaseDocument class
-            cascade = CascadeType.ALL ,// remove markdown along with user
-            orphanRemoval = true, // delete markdown if removed from the list
-            fetch = FetchType.LAZY // prevents markdowns from being loaded when user is loaded
-    )
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<Markdown> markdowns = new ArrayList<>();
+    private List<Folder> folders = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Markdown>  markdowns = new ArrayList<>();
+
+
+    public void addFolder(Folder folder) {
+        folders.add(folder);
+        folder.setUser(this);
+    }
+
+    public void removeFolder(Folder folder) {
+        folders.remove(folder);
+        folder.setUser(null);
+    }
+
+    public List<Folder> getFolders() {
+        return folders;
+    }
+
+    public void setFolders(List<Folder> folder) {
+        this.folders = folder;
+    }
 
     public List<Markdown> getMarkdowns() {
         return markdowns;
@@ -28,17 +47,6 @@ public class User extends Person {
     public void setMarkdowns(List<Markdown> markdowns) {
         this.markdowns = markdowns;
     }
-
-    public void addMarkdown(Markdown markdown) {
-        markdowns.add(markdown);
-        markdown.setUser(this);
-    }
-
-    public void deleteMarkdown(Markdown markdown) {
-        markdowns.remove(markdown);
-        markdown.setUser(null);
-    }
-
-
 }
+
 
