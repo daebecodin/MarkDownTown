@@ -1,26 +1,42 @@
 package com.daebecodin.mdt.markdown;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "markdowns")
+@RequestMapping(path = "/markdowntown")
 public class MarkdownController {
     private final MarkdownService markdownService;
+    private final MarkdownRepository markdownRepository;
 
 
     @Autowired
-    public MarkdownController(MarkdownService markdownService) {
+    public MarkdownController(MarkdownService markdownService, MarkdownRepository markdownRepository) {
         this.markdownService = markdownService;
+        this.markdownRepository = markdownRepository;
     }
 
-    @GetMapping("all")
-    public List<MarkdownDto> getAll() {
+    @GetMapping("/markdowns")
+    public ResponseEntity<?> getAllMarkdowns() {
+        List<MarkdownDto> all = markdownService.getAllMarkdowns();
+        return ResponseEntity.ok(all);
 
-        return null;
     }
+
+    @PostMapping(
+            path    = "/create-new-markdown",
+//            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    ResponseEntity<?> newMarkdown(@RequestBody Markdown markdown) {
+        Markdown newMarkdown = markdownRepository.save(markdown);
+
+        return new ResponseEntity<>(newMarkdown, HttpStatus.CREATED);
+    }
+
 }

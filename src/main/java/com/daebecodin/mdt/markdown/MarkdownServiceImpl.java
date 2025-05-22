@@ -1,6 +1,7 @@
 package com.daebecodin.mdt.markdown;
 
 
+import com.daebecodin.mdt.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
-public class MarkdownServiceImpl implements MarkdownService{
+public class MarkdownServiceImpl implements MarkdownService {
 
     private final MarkdownRepository markdownRepository;
 
@@ -19,10 +20,20 @@ public class MarkdownServiceImpl implements MarkdownService{
     }
 
     @Override
+    public List<MarkdownDto> getAllMarkdowns() {
+        return markdownRepository.findAll()
+                .stream()
+                .map(MarkdownDto::fromEntity)
+                .toList();
+    }
+
+    @Override
     public List<MarkdownDto> getMarkdownById(UUID userId) {
         return markdownRepository.findByUserId(userId)
                 .stream()
                 .map(MarkdownDto::fromEntity)
                 .collect(Collectors.toList());
     }
+
+
 }

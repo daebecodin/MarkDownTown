@@ -9,19 +9,38 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 @Entity
 public class Markdown extends BaseDocument {
     private String slugger;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "user_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            optional = true
+    )
+
+    @JoinColumn(
+            name = "user_id",
+            nullable = false
+    )
+    @OnDelete(
+            action = OnDeleteAction.CASCADE
+    )
     @JsonBackReference
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST,  optional = true)//persist folder on creation
-    @JoinColumn(name = "folder_id", nullable = true) // folder is optional for a markdown
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            optional = true
+    )//persist folder on creation
+    @JoinColumn(
+            name = "folder_id",
+            nullable = true) // folder is optional for a markdown
+    @OnDelete(
+            action = OnDeleteAction.CASCADE)
     @JsonBackReference
     private Folder folder;
 
@@ -29,7 +48,9 @@ public class Markdown extends BaseDocument {
 
     }
 
-    public Markdown(String s) {
+    public Markdown(UUID id, String title, String content, String html, LocalDateTime createdAt, LocalDateTime updatedAt, String slugger) {
+        super(id, title, content, html, createdAt, updatedAt);
+        this.slugger = slugger;
     }
 
     public String getSlugger() {
@@ -44,7 +65,6 @@ public class Markdown extends BaseDocument {
         return user;
     }
 
-
     public void setUser(User user) {
         this.user = user;
     }
@@ -56,5 +76,7 @@ public class Markdown extends BaseDocument {
     public void setFolder(Folder folder) {
         this.folder = folder;
     }
+
+
 }
 

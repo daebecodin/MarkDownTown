@@ -10,14 +10,10 @@ import java.util.UUID;
 @Component
 public interface MarkdownRepository extends JpaRepository<Markdown, UUID> {
 
-    // all markdowns by a given user
     List<Markdown> findByUserId(UUID userId);
+    List<Markdown> findAll();
 
-//    List<Markdown> findByName(String name);
-
-    // optionally get a single markdown by id and user
     List<Markdown> findByTitleContaining(String title);
-
 
     @Transactional
     void deleteByUserId(UUID id);

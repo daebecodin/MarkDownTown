@@ -18,6 +18,7 @@ public class MarkdownDto {
         dto.setId(markdown.getId());
         dto.setTitle(markdown.getTitle());
         dto.setContent(markdown.getContent());
+        dto.setCreatedAt(markdown.getCreatedAt());
         dto.setUpdatedAt(markdown.getUpdatedAt());
 
         return dto;
