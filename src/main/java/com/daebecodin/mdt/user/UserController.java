@@ -26,8 +26,10 @@ public class UserController {
         this.markdownService = markdownService;
     }
 
+    // TODO: get users
     @GetMapping("/users")
-    public ResponseEntity<?> getAllUsers(@RequestBody @RequestParam(required = false) String name) {
+    public ResponseEntity<?> getAllUsers(
+            @RequestParam(required = false) String name) {
         if (name != null) {
             UserDto dto = userService.getUserByName(name);
             return ResponseEntity.ok(dto);
@@ -38,12 +40,15 @@ public class UserController {
         }
     }
 
-    @PostMapping(value ="/users", consumes = "application/json")
+
+    //TODO Post new user
+    @PostMapping("/users")
     ResponseEntity<User> newUser(@RequestBody User user) {
         User newUser = userRepository.save(user);
+
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
-
+    // TODO: get user by id
     @GetMapping("users/{id}")
     public ResponseEntity<UserDto> getUserById(
             @RequestBody
@@ -51,9 +56,7 @@ public class UserController {
 
         return ResponseEntity.ok(userService.getUserById(id));
     }
-
-    // TODO: get get markdown list from user by id
-
+    // TODO: get get markdown list fron user by id
     // TODO: get get markdown by id from user by id
 
 

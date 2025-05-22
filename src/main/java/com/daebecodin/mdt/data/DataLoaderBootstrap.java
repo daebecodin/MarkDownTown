@@ -1,5 +1,6 @@
 package com.daebecodin.mdt.data;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
@@ -22,6 +23,8 @@ public class DataLoaderBootstrap implements ApplicationListener<ContextRefreshed
         this.applicationContext = applicationContext;
     }
 
+    @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         dataLoader.loadData();
     }

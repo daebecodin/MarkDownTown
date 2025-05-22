@@ -1,6 +1,7 @@
 package com.daebecodin.mdt.user;
 
 
+import com.daebecodin.mdt.folder.Folder;
 import com.daebecodin.mdt.markdown.Markdown;
 import org.springframework.stereotype.Component;
 
@@ -12,14 +13,19 @@ public class UserDto {
     private UUID id;
     private String name;
     private String username;
+    private List<Folder> folders;
     private List<Markdown> markdowns;
+
+    public UserDto() {
+    }
 
     public static UserDto fromEntity(User user) {
         UserDto dto = new UserDto();
         dto.setId(user.getId());
         dto.setName(user.getName());
         dto.setUsername(user.getUsername());
-        dto.setMarkdowns(user.getMarkdowns());
+//        dto.setMarkdowns(user.getMarkdowns());
+        dto.setFolders(user.getFolders());
 
         return dto;
     }
@@ -48,11 +54,19 @@ public class UserDto {
         this.username = username;
     }
 
-    public List<Markdown> getMarkdowns() {
-        return markdowns;
+//    public List<Markdown> getMarkdowns() {
+//        return markdowns;
+//    }
+
+//    public void setMarkdowns(List<Markdown> markdowns) {
+//        this.markdowns = markdowns;
+//    }
+
+    public List<Folder> getFolders() {
+        return folders;
     }
 
-    public void setMarkdowns(List<Markdown> markdowns) {
-        this.markdowns = markdowns;
+    public void setFolders(List<Folder> folders) {
+        this.folders = folders;
     }
 }

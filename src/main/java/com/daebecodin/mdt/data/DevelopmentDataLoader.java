@@ -7,6 +7,7 @@ import com.daebecodin.mdt.markdown.Markdown;
 import com.daebecodin.mdt.markdown.MarkdownRepository;
 import com.daebecodin.mdt.user.User;
 import com.daebecodin.mdt.user.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,7 @@ public class DevelopmentDataLoader extends DataLoader {
         this.folderRepository = folderRepository;
     }
 
+    @Transactional
     @Override
     public void loadMarkDownSpecificData() {
         System.out.println("🔄 DataLoader running");

@@ -3,6 +3,7 @@ package com.daebecodin.mdt.folder;
 import com.daebecodin.mdt.markdown.Markdown;
 import com.daebecodin.mdt.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -25,9 +26,12 @@ public class Folder {
     @JsonBackReference // to avoid circular JSON serialization
     private User user;
 
-    @OneToMany(mappedBy = "folder", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    @Column(name = "markdowns")
+    @OneToMany(
+            mappedBy = "folder",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("folder")
     private List<Markdown> markdowns = new ArrayList<>();
 
     public Folder() {

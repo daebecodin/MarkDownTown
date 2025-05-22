@@ -17,7 +17,7 @@ public class User extends Person {
     @JsonManagedReference
     private List<Folder> folders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     @JsonManagedReference
     private List<Markdown>  markdowns = new ArrayList<>();
 
