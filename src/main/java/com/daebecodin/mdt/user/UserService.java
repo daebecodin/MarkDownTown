@@ -1,6 +1,7 @@
 package com.daebecodin.mdt.user;
 
 
+import com.daebecodin.mdt.folder.Folder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public  interface UserService {
     UserDto getUserByName(String name);
 
     List<UserDto> getAllUsers();
+
 }

@@ -1,5 +1,8 @@
 package com.daebecodin.mdt.data;
 
+
+import com.daebecodin.mdt.folder.Folder;
+import com.daebecodin.mdt.folder.FolderRepository;
 import com.daebecodin.mdt.markdown.Markdown;
 import com.daebecodin.mdt.markdown.MarkdownRepository;
 import com.daebecodin.mdt.user.User;
@@ -11,13 +14,15 @@ import org.springframework.stereotype.Component;
 @Profile("development")
 @Component
 public class DevelopmentDataLoader extends DataLoader {
-    private  UserRepository userRepository;
-    private  MarkdownRepository markdownRepopsitory;
+    private UserRepository userRepository;
+    private MarkdownRepository markdownRepopsitory;
+    private FolderRepository folderRepository;
 
     @Autowired
-    public DevelopmentDataLoader(UserRepository userRepository, MarkdownRepository markdownRepository) {
+    public DevelopmentDataLoader(UserRepository userRepository, MarkdownRepository markdownRepository, FolderRepository folderRepository) {
         this.userRepository = userRepository;
         this.markdownRepopsitory = markdownRepository;
+        this.folderRepository = folderRepository;
     }
 
     @Override
@@ -41,6 +46,13 @@ public class DevelopmentDataLoader extends DataLoader {
         note.getUpdatedAt();
         note.setUser(alice);
         markdownRepopsitory.save(note);
+
+        Folder folder = new Folder();
+        folder.setName("random folder");
+        folder.setUser(alice);
+        folder.addMarkdown(note);
+        folderRepository.save(folder);
     }
+
 
 }

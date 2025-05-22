@@ -12,7 +12,7 @@ import java.util.UUID;
 public class BaseDocument implements AbstractDocument {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 

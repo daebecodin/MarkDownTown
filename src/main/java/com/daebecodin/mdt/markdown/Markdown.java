@@ -2,13 +2,10 @@ package com.daebecodin.mdt.markdown;
 
 
 import com.daebecodin.mdt.document.BaseDocument;
+import com.daebecodin.mdt.folder.Folder;
 import com.daebecodin.mdt.user.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -16,11 +13,17 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Markdown extends BaseDocument {
     private String slugger;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @JsonBackReference
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST,  optional = true)//persist folder on creation
+    @JoinColumn(name = "folder_id", nullable = true) // folder is optional for a markdown
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonBackReference
+    private Folder folder;
 
     public Markdown() {
 
@@ -37,7 +40,6 @@ public class Markdown extends BaseDocument {
         this.slugger = slugger;
     }
 
-
     public User getUser() {
         return user;
     }
@@ -45,6 +47,14 @@ public class Markdown extends BaseDocument {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Folder getFolder() {
+        return folder;
+    }
+
+    public void setFolder(Folder folder) {
+        this.folder = folder;
     }
 }
 
