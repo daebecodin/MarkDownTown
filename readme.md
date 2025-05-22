@@ -7,7 +7,7 @@ A simple, markdown-powered note-taker and developer journal built with Spring Bo
 # Currently Working On
 - PUT endpoint
 - DELETE endpoint
-- Adding Folder Logic
+- Adding Folder Logic (almost complete)
 ---
 
 
