@@ -28,7 +28,7 @@ public class Markdown extends BaseDocument {
     @OnDelete(
             action = OnDeleteAction.CASCADE
     )
-    @JsonBackReference
+    @JsonBackReference("user-markdowns")
     private User user;
 
     @ManyToOne(
@@ -41,7 +41,7 @@ public class Markdown extends BaseDocument {
             nullable = true) // folder is optional for a markdown
     @OnDelete(
             action = OnDeleteAction.CASCADE)
-    @JsonBackReference
+    @JsonBackReference(value = "folder-markdowns")
     private Folder folder;
 
     public Markdown() {

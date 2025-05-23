@@ -23,7 +23,7 @@ public class Folder {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference // to avoid circular JSON serialization
+    @JsonBackReference (value = "user-folders")
     private User user;
 
     @OneToMany(
@@ -31,7 +31,7 @@ public class Folder {
             orphanRemoval = true,
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("folder")
+    @JsonManagedReference(value = "folder-markdowns")
     private List<Markdown> markdowns = new ArrayList<>();
 
     public Folder() {
