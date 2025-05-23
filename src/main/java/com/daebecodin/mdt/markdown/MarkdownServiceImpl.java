@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -28,11 +29,10 @@ public class MarkdownServiceImpl implements MarkdownService {
     }
 
     @Override
-    public List<MarkdownDto> getMarkdownById(UUID userId) {
-        return markdownRepository.findByUserId(userId)
-                .stream()
-                .map(MarkdownDto::fromEntity)
-                .collect(Collectors.toList());
+    public Optional<MarkdownDto> getMarkdownById(UUID userId) {
+        return markdownRepository.findById(userId)
+                .map(MarkdownDto::fromEntity);
+
     }
 
 

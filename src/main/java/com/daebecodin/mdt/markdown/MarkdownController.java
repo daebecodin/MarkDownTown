@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/markdowntown")
+@RequestMapping(value = "/markdowntown")
 public class MarkdownController {
     private final MarkdownService markdownService;
     private final MarkdownRepository markdownRepository;
@@ -21,15 +22,35 @@ public class MarkdownController {
         this.markdownRepository = markdownRepository;
     }
 
-    @GetMapping("/markdowns")
+
+    /**
+     * all markdowns
+     */
+    @GetMapping(
+            value = "/markdowns"
+    )
     public ResponseEntity<?> getAllMarkdowns() {
         List<MarkdownDto> all = markdownService.getAllMarkdowns();
         return ResponseEntity.ok(all);
-
     }
 
+    /**
+     * markdown by id
+     */
+    @GetMapping(
+            value = "/markdowns/{id}"
+    )
+    public ResponseEntity<?> getMarkdownById(@PathVariable UUID id) {
+     return markdownService.getMarkdownById(id)
+             .map(ResponseEntity::ok)
+             .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    /**
+     * create new markdown
+     */
     @PostMapping(
-            path    = "/create-new-markdown"
+            value    = "/create-new-markdown"
     )
     ResponseEntity<?> newMarkdown(@RequestBody Markdown markdown) {
         Markdown newMarkdown = markdownRepository.save(markdown);
