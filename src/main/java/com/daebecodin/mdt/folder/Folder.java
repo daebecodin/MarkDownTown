@@ -21,8 +21,8 @@ public class Folder {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false) // one must be a user to create a folder
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true) // one must be a user to create a folder
+    @JoinColumn(name = "user_id", nullable = true) // set to false if you don't want a folder to be made without a user
     @JsonBackReference (value = "user-folders")
     private User user;
 

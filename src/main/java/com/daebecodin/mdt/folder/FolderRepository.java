@@ -11,17 +11,15 @@ import java.util.UUID;
 public interface FolderRepository extends JpaRepository<Folder, UUID> {
 
     List<Folder> findAll();
-    List<Folder> findAllByName(String name);
-    List<Folder> findByName(String name);
     Optional<Folder> findById(UUID id);
+    List<Folder> findByNameContaining(String name);
 
     long count();
 
     void delete(Folder folder);
-    void deleteById(Folder folder);
+    void deleteById(UUID id);
 
     boolean existsById(UUID id);
-
 
 
 
