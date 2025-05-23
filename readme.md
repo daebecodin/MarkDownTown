@@ -1,12 +1,14 @@
 
 # Modern Developer Journal
 
-A simple, markdown-powered note-taker and developer journal built with Spring Boot and Supabase.
+A simple, markdown-powered note-taker and developer journal built with RESTful endpoints Spring Boot and Supabase.
 
 ---
-# Currently Working On
-- PUT endpoint
-- DELETE endpoint
+# Currently Working Ona
+- GET for `Folder`
+- POST for `Folder`
+- PUT for `User`, `Folder`, and `Markdown` 
+- DELETE  for `User`, `Folder`, and `Markdown`
 - Adding Folder Logic (almost complete)
 ---
 
@@ -25,6 +27,7 @@ A simple, markdown-powered note-taker and developer journal built with Spring Bo
 - Java 17+
 - Maven or Gradle
 - Supabase account with/or a PostgreSQL database
+- Postman
 
 
 ## Getting Started
@@ -74,10 +77,25 @@ On startup, the built-in data loader will:
 2. Seed the `markdown` table with example notes
 
 ---
-## Current API Endpoints
+## User API Endpoints
 
-| Method | Path                     | Description                          |
-| ------ | ------------------------ | ------------------------------------ |
-| GET    | /markdowntown/users      | List all users(or filter by `?=name) |
-| GET    | /markdowntown/users/{id} | Find a user by id                    |
-| POST   | /markdowntown/users      | create a user                        |
+| Method | Path                       | Description                          |
+| ------ |----------------------------| ------------------------------------ |
+| GET    | /markdowntown/users        | List all users(or filter by `?=name) |
+| GET    | /markdowntown/users/{id}   | Find a user by id                    |
+| POST   | /markdowntown/users/create | create a user                        |
+
+## Folder API Endpoints
+
+| Method      | Path                       | Description                          |
+|-------------|----------------------------| ------------------------------------ |
+| COMING SOON | 
+
+
+## Markdown API Endpoints
+
+| Method | Path                                        | Description                             |
+| ------ |---------------------------------------------|-----------------------------------------|
+| GET    | /markdowntown/markdowns                     | List all markdown(or filter by `?=name) |
+| GET    | /markdowntown/markdowns/{id}                | Find a markdown by id                   |
+| POST   | /markdowntown/markdowns/create-new-markdown | create a markdown                       |
