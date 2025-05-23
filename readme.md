@@ -76,8 +76,10 @@ On startup, the built-in data loader will:
 1. Create default users
 2. Seed the `markdown` table with example notes
 
+
+## Call the API endpoints
 ---
-## User API Endpoints
+
 
 | Method | Path                       | Description                          |
 | ------ |----------------------------| ------------------------------------ |
