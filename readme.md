@@ -5,11 +5,8 @@ A simple, markdown-powered note-taker and developer journal built with RESTful e
 
 ---
 # Currently Working On
-- GET for `Folder`
-- POST for `Folder`
 - PUT for `User`, `Folder`, and `Markdown` 
 - DELETE  for `User`, `Folder`, and `Markdown`
-- Adding Folder Logic (almost complete)
 ---
 
 
@@ -89,9 +86,11 @@ On startup, the built-in data loader will:
 
 ## Folder API Endpoints
 
-| Method      | Path                       | Description                          |
-|-------------|----------------------------| ------------------------------------ |
-| COMING SOON | 
+| Method      | Path                                      | Description            |
+|-------------|-------------------------------------------|------------------------|
+| GET    | /markdowntown/folders                     | List all folder        |
+| GET    | /markdowntown/folders/{id}                | Find a folder by id    |
+| POST   | /markdowntown/markdowns/create-new-folder | create a folder        |
 
 
 ## Markdown API Endpoints
