@@ -4,7 +4,7 @@
 A simple, markdown-powered note-taker and developer journal built with RESTful endpoints Spring Boot and Supabase.
 
 ---
-# Currently Working Ona
+# Currently Working On
 - GET for `Folder`
 - POST for `Folder`
 - PUT for `User`, `Folder`, and `Markdown` 
