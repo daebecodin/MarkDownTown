@@ -14,11 +14,11 @@ import java.util.List;
 @Table(name = "users")
 public class User extends Person {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "user-folders")
+    @JsonManagedReference(value = "user-folders") // reference for users list of folders
     private List<Folder> folders = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
-    @JsonManagedReference(value = "user-markdowns")
+    @JsonManagedReference(value = "user-markdowns") // reference for users lost of markdowns
     private List<Markdown>  markdowns = new ArrayList<>();
 
     public void addFolder(Folder folder) {

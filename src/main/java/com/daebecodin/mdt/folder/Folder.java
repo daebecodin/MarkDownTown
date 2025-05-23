@@ -21,7 +21,7 @@ public class Folder {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false) // one must be a user to create a folder
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference (value = "user-folders")
     private User user;
@@ -31,7 +31,7 @@ public class Folder {
             orphanRemoval = true,
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "folder-markdowns")
+    @JsonManagedReference(value = "folder-markdowns") // reference for Folder -> [markdowns]
     private List<Markdown> markdowns = new ArrayList<>();
 
     public Folder() {

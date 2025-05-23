@@ -23,12 +23,12 @@ public class Markdown extends BaseDocument {
 
     @JoinColumn(
             name = "user_id",
-            nullable = false
+            nullable = true // one doesnt need to be a user to mke a markdown
     )
     @OnDelete(
             action = OnDeleteAction.CASCADE
     )
-    @JsonBackReference("user-markdowns")
+    @JsonBackReference("user-markdowns") // reference for a users list of markdowns
     private User user;
 
     @ManyToOne(
@@ -38,10 +38,10 @@ public class Markdown extends BaseDocument {
     )//persist folder on creation
     @JoinColumn(
             name = "folder_id",
-            nullable = true) // folder is optional for a markdown
+            nullable = true) // having folder is optional for a markdown
     @OnDelete(
             action = OnDeleteAction.CASCADE)
-    @JsonBackReference(value = "folder-markdowns")
+    @JsonBackReference(value = "folder-markdowns") // reference for a folder's list of markdowns
     private Folder folder;
 
     public Markdown() {

@@ -29,13 +29,10 @@ public class MarkdownController {
     }
 
     @PostMapping(
-            path    = "/create-new-markdown",
-//            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
+            path    = "/create-new-markdown"
     )
     ResponseEntity<?> newMarkdown(@RequestBody Markdown markdown) {
         Markdown newMarkdown = markdownRepository.save(markdown);
-
         return new ResponseEntity<>(newMarkdown, HttpStatus.CREATED);
     }
 
