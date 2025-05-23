@@ -26,7 +26,9 @@ public class UserController {
         this.markdownService = markdownService;
     }
 
-    // TODO: get users
+    /*
+     * GET all users
+     */
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers(
             @RequestParam(required = false) String name) {
@@ -39,25 +41,33 @@ public class UserController {
             return ResponseEntity.ok(all);
         }
     }
-
-
-    //TODO Post new user
-    @PostMapping("/users")
-    ResponseEntity<User> newUser(@RequestBody User user) {
-        User newUser = userRepository.save(user);
-
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-    }
-    // TODO: get user by id
-    @GetMapping("users/{id}")
+        /*
+         * get user by id
+         */
+    @GetMapping(
+            "users/{id}"
+    )
     public ResponseEntity<UserDto> getUserById(
             @RequestBody
             @PathVariable UUID id) {
 
         return ResponseEntity.ok(userService.getUserById(id));
     }
-    // TODO: get get markdown list fron user by id
-    // TODO: get get markdown by id from user by id
+
+    /*
+    * Post new user
+     */
+    @PostMapping(
+            "/users/create"
+    )
+    ResponseEntity<User> newUser(@RequestBody User user) {
+        User newUser = userRepository.save(user);
+
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    // TODO: update user
+    // TODO: delete user
 
 
 
