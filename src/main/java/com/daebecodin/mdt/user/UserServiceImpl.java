@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -37,6 +38,17 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(UserDto::fromEntity)
                 .toList();
+    }
+
+    @Override
+    public Optional<UserDto> updateUserById(UUID id, UserDto updatedUser) {
+        return userRepository.findById(id)
+                .map(existingUser -> {
+                    existingUser.setName(updatedUser.getName());
+                    existingUser.setUsername(updatedUser.getUsername());
+                    User saved = userRepository.save(existingUser);
+                    return UserDto.fromEntity(saved);
+                });
     }
 
 

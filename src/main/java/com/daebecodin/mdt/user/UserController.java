@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path ="/markdowntown")
+@RequestMapping(path ="/markdowntown/users")
 public class UserController {
 
     private final UserService userService;
@@ -29,7 +29,7 @@ public class UserController {
     /*
      * GET all users
      */
-    @GetMapping("/users")
+    @GetMapping("")
     public ResponseEntity<?> getAllUsers(
             @RequestParam(required = false) String name) {
         if (name != null) {
@@ -45,7 +45,7 @@ public class UserController {
          * get user by id
          */
     @GetMapping(
-            "users/{id}"
+            "{id}"
     )
     public ResponseEntity<UserDto> getUserById(
             @RequestBody
@@ -58,7 +58,7 @@ public class UserController {
     * Post new user
      */
     @PostMapping(
-            "/users/create"
+            "/create"
     )
     ResponseEntity<User> newUser(@RequestBody User user) {
         User newUser = userRepository.save(user);
@@ -66,7 +66,17 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    // TODO: update user
+    /*
+     * update user by id
+     */
+    @PutMapping(value = "/{id}/update-user")
+        ResponseEntity<UserDto> updateUserById(@PathVariable UUID id, @RequestBody UserDto user) {
+        return userService.updateUserById(id, user)
+                .map(ResponseEntity::ok)
+                .orElseGet(()-> ResponseEntity.notFound().build());
+    }
+
+
     // TODO: delete user
 
 
