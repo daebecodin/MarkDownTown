@@ -73,6 +73,7 @@ On startup, the built-in data loader will:
 | GET    | /markdowntown/users/{id}             | Find a user by id                   |
 | POST   | /markdowntown/users/create           | create a user                       |
 | PUT    | /markdowntown/users/{id}/update-user | update a user                       |
+| DELETE | /markdowntown/users/{id}/delete-user | delete a user                       |
 
 
 ## Folder API Endpoints
