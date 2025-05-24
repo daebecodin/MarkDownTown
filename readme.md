@@ -5,7 +5,7 @@ A simple, markdown-powered note-taker and developer journal built with RESTful e
 
 ---
 # Currently Working On
-- PUT for `User` and `Markdown` 
+- PUT for `User` 
 - DELETE  for `User`, `Folder`, and `Markdown`
 ---
 
@@ -66,7 +66,7 @@ On startup, the built-in data loader will:
 
 ## Call the API endpoints
 ---
-
+## User Api Endpoints
 
 | Method | Path                       | Description                         |
 |--------|----------------------------|-------------------------------------|
@@ -86,8 +86,9 @@ On startup, the built-in data loader will:
 
 ## Markdown API Endpoints
 
-| Method | Path                                        | Description                            |
-|--------|---------------------------------------------|----------------------------------------|
-| GET    | /markdowntown/markdowns                     | List all markdown(or filter by ?=name) |
-| GET    | /markdowntown/markdowns/{id}                | Find a markdown by id                  |
-| POST   | /markdowntown/markdowns/create-new-markdown | create a markdown                      |
+| Method | Path                                         | Description                            |
+|--------|----------------------------------------------|----------------------------------------|
+| GET    | /markdowntown/markdowns                      | List all markdown(or filter by ?=name) |
+| GET    | /markdowntown/markdowns/{id}                 | Find a markdown by id                  |
+| POST   | /markdowntown/markdowns/create-new-markdown  | create a markdown                      |
+| PUT    | /markdowntown/markdowns/{id}/update-markdown | update a markdown                      |
