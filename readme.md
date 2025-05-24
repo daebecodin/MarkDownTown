@@ -1,22 +1,12 @@
 
 # Modern Developer Journal
 
-A simple, markdown-powered note-taker and developer journal built with RESTful endpoints Spring Boot and Supabase.
+A simple, markdown-powered note-taker and developer journal built with RESTful endpoints made with Spring Boot and Supabase.
 
 ---
 # Currently Working On
 - PUT for `User`, `Folder`, and `Markdown` 
 - DELETE  for `User`, `Folder`, and `Markdown`
----
-
-
-## Features
-
-- Create, read, update, and delete Markdown notes
-- User management with Supabase (PostgreSQL)
-- Auto-loader to seed sample data on startup
-- Clean, REST-style JSON endpoints
-
 ---
 
 ## Prerequisites
