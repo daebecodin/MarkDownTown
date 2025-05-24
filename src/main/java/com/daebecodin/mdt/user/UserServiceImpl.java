@@ -1,6 +1,7 @@
 package com.daebecodin.mdt.user;
 
 
+import com.daebecodin.mdt.user.exceptions.UserNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -49,6 +50,13 @@ public class UserServiceImpl implements UserService {
                     User saved = userRepository.save(existingUser);
                     return UserDto.fromEntity(saved);
                 });
+    }
+
+    @Override
+    public void deleteUserById(UUID id)  {
+        userRepository.findById(id).ifPresentOrElse(userRepository::delete, () -> {
+            throw new UserNotFoundException(id);
+        });
     }
 
 
