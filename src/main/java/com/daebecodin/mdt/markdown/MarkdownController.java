@@ -1,5 +1,6 @@
 package com.daebecodin.mdt.markdown;
 
+import com.daebecodin.mdt.folder.FolderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/markdowntown")
+@RequestMapping(value = "/markdowntown/markdowns")
 public class MarkdownController {
     private final MarkdownService markdownService;
     private final MarkdownRepository markdownRepository;
@@ -27,7 +28,7 @@ public class MarkdownController {
      * all markdowns
      */
     @GetMapping(
-            value = "/markdowns"
+            value = ""
     )
     public ResponseEntity<?> getAllMarkdowns() {
         List<MarkdownDto> all = markdownService.getAllMarkdowns();
@@ -38,7 +39,7 @@ public class MarkdownController {
      * markdown by id
      */
     @GetMapping(
-            value = "/markdowns/{id}"
+            value = "/{id}"
     )
     public ResponseEntity<?> getMarkdownById(@PathVariable UUID id) {
      return markdownService.getMarkdownById(id)
@@ -55,6 +56,13 @@ public class MarkdownController {
     ResponseEntity<?> newMarkdown(@RequestBody Markdown markdown) {
         Markdown newMarkdown = markdownRepository.save(markdown);
         return new ResponseEntity<>(newMarkdown, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/{id}/update-markdown")
+    public ResponseEntity<MarkdownDto> updateMarkdownById(@PathVariable UUID id, @RequestBody MarkdownDto markdown) {
+        return markdownService.updateMarkdownById(id, markdown)
+                .map(ResponseEntity::ok)
+                .orElseGet(()-> ResponseEntity.notFound().build());
     }
 
 }

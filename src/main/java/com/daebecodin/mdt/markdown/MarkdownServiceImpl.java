@@ -35,5 +35,18 @@ public class MarkdownServiceImpl implements MarkdownService {
 
     }
 
+    @Override
+    public Optional<MarkdownDto> updateMarkdownById(UUID id, MarkdownDto updatedMarkdown) {
+        return markdownRepository.findById(id)
+                .map(existingMarkdown -> {
+//                    existingMarkdown.setFolder(updatedMarkdown.getFolder());
+                    existingMarkdown.setTitle(updatedMarkdown.getTitle());
+                    existingMarkdown.setContent(updatedMarkdown.getContent());
+
+                    Markdown saved = markdownRepository.save(existingMarkdown);
+                    return MarkdownDto.fromEntity(saved);
+                });
+    }
+
 
 }

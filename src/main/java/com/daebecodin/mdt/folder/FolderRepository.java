@@ -16,7 +16,6 @@ public interface FolderRepository extends JpaRepository<Folder, UUID> {
     long count();
     void delete(Folder folder);
     void deleteById(UUID id);
-
     boolean existsById(UUID id);
 
 

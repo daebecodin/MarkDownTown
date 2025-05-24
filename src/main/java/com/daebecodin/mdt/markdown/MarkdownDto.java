@@ -1,5 +1,6 @@
 package com.daebecodin.mdt.markdown;
 
+import com.daebecodin.mdt.folder.Folder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ public class MarkdownDto {
     private UUID id;
     private String title;
     private String content;
+//    private Folder folder;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -18,6 +20,7 @@ public class MarkdownDto {
         dto.setId(markdown.getId());
         dto.setTitle(markdown.getTitle());
         dto.setContent(markdown.getContent());
+//        dto.setFolder(markdown.getFolder());
         dto.setCreatedAt(markdown.getCreatedAt());
         dto.setUpdatedAt(markdown.getUpdatedAt());
 
@@ -63,4 +66,12 @@ public class MarkdownDto {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+//    public Folder getFolder() {
+//        return folder;
+//    }
+//
+//    public void setFolder(Folder folder) {
+//        this.folder = folder;
+//    }
 }
