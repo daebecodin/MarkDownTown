@@ -13,9 +13,7 @@ public interface FolderRepository extends JpaRepository<Folder, UUID> {
     List<Folder> findAll();
     Optional<Folder> findById(UUID id);
     List<Folder> findByNameContaining(String name);
-
     long count();
-
     void delete(Folder folder);
     void deleteById(UUID id);
 

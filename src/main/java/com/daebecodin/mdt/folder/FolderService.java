@@ -11,7 +11,9 @@ import java.util.UUID;
 @Service
 public interface FolderService {
     List<FolderDto> getAllFolders();
-    Optional<FolderDto> getFolderById(UUID is);
+    Optional<FolderDto> getFolderById(UUID id);
+    Optional<FolderDto> updateFolderById( UUID id, FolderDto updatedFolder);
+//    Optional<FolderDto> deleteFolderById(UUID id);
 
 
 }

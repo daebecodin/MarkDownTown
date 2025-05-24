@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -39,5 +40,15 @@ public class FolderController {
     public ResponseEntity<?> creatFolder(@RequestBody Folder folder){
         Folder newFolder = folderRepository.save(folder);
         return new ResponseEntity<>(newFolder, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/{id}/update-folder")
+    public ResponseEntity<FolderDto>updateFolderById(@PathVariable UUID id, @RequestBody FolderDto folder) {
+
+       return folderService.updateFolderById(id, folder)
+                .map(ResponseEntity::ok)
+                .orElseGet(()-> ResponseEntity.notFound().build());
+
+
     }
 }

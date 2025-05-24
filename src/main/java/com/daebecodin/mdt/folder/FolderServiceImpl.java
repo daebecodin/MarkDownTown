@@ -1,14 +1,12 @@
 package com.daebecodin.mdt.folder;
 
-import com.daebecodin.mdt.markdown.MarkdownDto;
-import com.daebecodin.mdt.markdown.MarkdownRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
+@Service
 public class FolderServiceImpl implements FolderService {
     private final FolderRepository folderRepository;
 
@@ -29,4 +27,15 @@ public class FolderServiceImpl implements FolderService {
         return folderRepository.findById(id)
                 .map(FolderDto::fromEntity);
     }
+
+    @Override
+    public Optional<FolderDto> updateFolderById(UUID id, FolderDto updatedFolder) {
+        return folderRepository.findById(id)
+                .map(existingFolder -> {
+                    existingFolder.setName(updatedFolder.getName());
+                    Folder saved = folderRepository.save(existingFolder);
+                    return FolderDto.fromEntity(saved);
+                });
+    }
+
 }

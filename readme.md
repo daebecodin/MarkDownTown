@@ -5,7 +5,7 @@ A simple, markdown-powered note-taker and developer journal built with RESTful e
 
 ---
 # Currently Working On
-- PUT for `User`, `Folder`, and `Markdown` 
+- PUT for `User` and `Markdown` 
 - DELETE  for `User`, `Folder`, and `Markdown`
 ---
 
@@ -68,25 +68,26 @@ On startup, the built-in data loader will:
 ---
 
 
-| Method | Path                       | Description                          |
-| ------ |----------------------------| ------------------------------------ |
-| GET    | /markdowntown/users        | List all users(or filter by `?=name) |
-| GET    | /markdowntown/users/{id}   | Find a user by id                    |
-| POST   | /markdowntown/users/create | create a user                        |
+| Method | Path                       | Description                         |
+|--------|----------------------------|-------------------------------------|
+| GET    | /markdowntown/users        | List all users(or filter by ?=name) |
+| GET    | /markdowntown/users/{id}   | Find a user by id                   |
+| POST   | /markdowntown/users/create | create a user                       |
 
 ## Folder API Endpoints
 
-| Method      | Path                                      | Description            |
-|-------------|-------------------------------------------|------------------------|
-| GET    | /markdowntown/folders                     | List all folder        |
-| GET    | /markdowntown/folders/{id}                | Find a folder by id    |
-| POST   | /markdowntown/markdowns/create-new-folder | create a folder        |
+| Method | Path                                     | Description           |
+|--------|------------------------------------------|-----------------------|
+| GET    | /markdowntown/folders                    | List all folder       |
+| GET    | /markdowntown/folders/{id}               | Find a folder by id   |
+| POST   | /markdowntown/folder/create-new-folder   | create a folder       |
+| PUT    | /markdowntown/folders/{id}/update-folder | update a folder by id |
 
 
 ## Markdown API Endpoints
 
-| Method | Path                                        | Description                             |
-| ------ |---------------------------------------------|-----------------------------------------|
-| GET    | /markdowntown/markdowns                     | List all markdown(or filter by `?=name) |
-| GET    | /markdowntown/markdowns/{id}                | Find a markdown by id                   |
-| POST   | /markdowntown/markdowns/create-new-markdown | create a markdown                       |
+| Method | Path                                        | Description                            |
+|--------|---------------------------------------------|----------------------------------------|
+| GET    | /markdowntown/markdowns                     | List all markdown(or filter by ?=name) |
+| GET    | /markdowntown/markdowns/{id}                | Find a markdown by id                  |
+| POST   | /markdowntown/markdowns/create-new-markdown | create a markdown                      |
