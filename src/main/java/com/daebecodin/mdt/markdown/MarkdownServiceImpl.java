@@ -48,5 +48,12 @@ public class MarkdownServiceImpl implements MarkdownService {
                 });
     }
 
+    @Override
+    public void deleteMarkdownById(UUID id) {
+        markdownRepository.findById(id).ifPresentOrElse(markdownRepository::delete,() -> {
+            throw new MarkdownNotFoundException(id);
+        });
+    }
+
 
 }

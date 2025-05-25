@@ -4,7 +4,7 @@
 This Spring Boot RPC provides a scalable, secure backend for managing Markdown notes. It offers well-defined HTTP endpoints for creating, reading, updating, and deleting notes with built-in input validation and comprehensive error handling. Notes are persisted in a relational database with transactional integrity and served over JSON-based HTTP calls. The API is designed for extensibility and supports authentication and authorization to safeguard note data.
 ---
 # Currently Working On
-- DELETE  for `Folder`, and `Markdown`
+
 ---
 
 ## Prerequisites
@@ -94,3 +94,4 @@ On startup, the built-in data loader will:
 | GET    | /markdowntown/markdowns/{id}                 | Find a markdown by id                  |
 | POST   | /markdowntown/markdowns/create-new-markdown  | create a markdown                      |
 | PUT    | /markdowntown/markdowns/{id}/update-markdown | update a markdown                      |
+| DELETE | /markdowntown/markdowns/{id}/delete-markdown | delete a markdown by id                |

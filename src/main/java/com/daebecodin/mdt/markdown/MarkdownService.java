@@ -13,4 +13,6 @@ public  interface MarkdownService {
     List<MarkdownDto> getAllMarkdowns();
     Optional<MarkdownDto> getMarkdownById(UUID id);
     Optional<MarkdownDto> updateMarkdownById(UUID id, MarkdownDto updatedMarkdown);
+    void deleteMarkdownById(UUID id);
+
 }
