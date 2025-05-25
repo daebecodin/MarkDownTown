@@ -13,7 +13,7 @@ public interface FolderService {
     List<FolderDto> getAllFolders();
     Optional<FolderDto> getFolderById(UUID id);
     Optional<FolderDto> updateFolderById( UUID id, FolderDto updatedFolder);
-//    Optional<FolderDto> deleteFolderById(UUID id);
+    void deleteFolderById(UUID id);
 
 
 }
