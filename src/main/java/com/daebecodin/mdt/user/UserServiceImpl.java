@@ -1,7 +1,6 @@
 package com.daebecodin.mdt.user;
 
 
-import com.daebecodin.mdt.user.exceptions.UserNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

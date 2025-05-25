@@ -1,4 +1,4 @@
-package com.daebecodin.mdt.user.exceptions;
+package com.daebecodin.mdt.user;
 
 import java.util.UUID;
 
