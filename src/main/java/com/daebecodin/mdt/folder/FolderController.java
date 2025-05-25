@@ -51,4 +51,10 @@ public class FolderController {
 
 
     }
+
+    @DeleteMapping(value = "/{id}/delete-folder")
+    public ResponseEntity<String> deleteFolderById(@PathVariable UUID id) {
+        folderService.deleteFolderById(id);
+        return new ResponseEntity<>("Folder " + id + " Deleted", HttpStatus.OK);
+    }
 }

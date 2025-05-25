@@ -65,4 +65,10 @@ public class MarkdownController {
                 .orElseGet(()-> ResponseEntity.notFound().build());
     }
 
+    @DeleteMapping(value = "/{id}/delete-markdown")
+    public ResponseEntity<String> deleteMarkdownById(@PathVariable UUID id) {
+        markdownService.deleteMarkdownById(id);
+        return new ResponseEntity<>("Markdown " + id +  "Deleted", HttpStatus.OK);
+    }
+
 }
