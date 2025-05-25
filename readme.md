@@ -83,6 +83,7 @@ On startup, the built-in data loader will:
 | GET    | /markdowntown/folders/{id}               | Find a folder by id   |
 | POST   | /markdowntown/folder/create-new-folder   | create a folder       |
 | PUT    | /markdowntown/folders/{id}/update-folder | update a folder by id |
+| DELETE | /markdowntown/folders/{id}/delete-folder | delete a folder by id |
 
 
 ## Markdown API Endpoints
