@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -55,6 +54,6 @@ public class FolderController {
     @DeleteMapping(value = "/{id}/delete-folder")
     public ResponseEntity<String> deleteFolderById(@PathVariable UUID id) {
         folderService.deleteFolderById(id);
-        return new ResponseEntity<>("Folder " + id + " Deleted", HttpStatus.OK);
+        return new ResponseEntity<>("Folder " + id + " Has Been Deleted", HttpStatus.OK);
     }
 }

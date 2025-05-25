@@ -1,13 +1,11 @@
 package com.daebecodin.mdt.user;
 
 
-import com.daebecodin.mdt.markdown.MarkdownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,13 +15,12 @@ public class UserController {
 
     private final UserService userService;
     private final UserRepository userRepository;
-    private final MarkdownService markdownService;
 
     @Autowired
-    public UserController(UserService userService, UserRepository userRepository, MarkdownService markdownService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
-        this.markdownService = markdownService;
+
     }
 
     /*
@@ -83,7 +80,7 @@ public class UserController {
     @DeleteMapping(value = "{id}/delete-user")
     public ResponseEntity<String> deleteUserById(@PathVariable UUID id) {
         userService.deleteUserById(id);
-        return new ResponseEntity<>("User Deleted", HttpStatus.OK);
+        return new ResponseEntity<>("User " + id + " Has Been Deleted ", HttpStatus.OK);
     }
 
 

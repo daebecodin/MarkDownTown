@@ -1,9 +1,7 @@
 package com.daebecodin.mdt.markdown;
 
-import com.daebecodin.mdt.folder.FolderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,7 +66,7 @@ public class MarkdownController {
     @DeleteMapping(value = "/{id}/delete-markdown")
     public ResponseEntity<String> deleteMarkdownById(@PathVariable UUID id) {
         markdownService.deleteMarkdownById(id);
-        return new ResponseEntity<>("Markdown " + id +  "Deleted", HttpStatus.OK);
+        return new ResponseEntity<>("Markdown " + id +  " Has Been Deleted", HttpStatus.OK);
     }
 
 }
