@@ -1,7 +1,7 @@
 
-# Modern Developer Journal
+# Remote Procedure Call in Spring Boot
 
-This Spring Boot REST API provides a scalable, secure backend for managing Markdown notes. It offers well-defined HTTP endpoints for creating, reading, updating, and deleting notes with built-in input validation and comprehensive error handling. Notes are persisted in a relational database with transactional integrity and served over JSON-based HTTP calls. The API is designed for extensibility and supports authentication and authorization to safeguard note data.
+This Spring Boot RPC provides a scalable, secure backend for managing Markdown notes. It offers well-defined HTTP endpoints for creating, reading, updating, and deleting notes with built-in input validation and comprehensive error handling. Notes are persisted in a relational database with transactional integrity and served over JSON-based HTTP calls. The API is designed for extensibility and supports authentication and authorization to safeguard note data.
 ---
 # Currently Working On
 - DELETE  for `Folder`, and `Markdown`
