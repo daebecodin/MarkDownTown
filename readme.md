@@ -62,7 +62,7 @@ On startup, the built-in data loader will:
 2. Seed the `markdown` table with example notes
 
 
-## Call the API endpoints
+## Call the API endpoints [here](https://duranddyer.postman.co/workspace/CRUD-tuts~607df803-ba5f-41cd-8498-e958a02c3c8a/collection/44811802-a2094595-7899-4060-9237-909f75982096?action=share&creator=44811802&active-environment=44811802-d9bbb7dd-2366-4165-9512-ebbb8ba765b9)
 ---
 ## User Api Endpoints
 
